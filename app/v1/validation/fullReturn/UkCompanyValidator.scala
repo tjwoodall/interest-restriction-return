@@ -111,7 +111,7 @@ trait UkCompanyValidator extends BaseValidation {
     }
   }
 
-  private def companyEstimateReasonIsValidLength(reason: String): Boolean = reason.length >= 1 && reason.length <= 5000
+  private def companyEstimateReasonIsValidLength(reason: String): Boolean = reason.nonEmpty && reason.length <= 5000
 
   private def companyEstimateReasonHasValidCharacters(reason: String): Boolean = {
     val regex = "^[ -~¢-¥©®±×÷‐₠-₿−-∝≈≠≣-≥]*$".r

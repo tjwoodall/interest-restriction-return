@@ -27,7 +27,7 @@ trait RevisedReturnDetailsValidator extends BaseValidation {
   val revisedReturnDetailsModel: RevisedReturnDetailsModel
 
   private def revisedReturnDetailsIsValidLength: Boolean =
-    revisedReturnDetailsModel.details.length >= 1 && revisedReturnDetailsModel.details.length <= 5000
+    revisedReturnDetailsModel.details.nonEmpty && revisedReturnDetailsModel.details.length <= 5000
 
   private def revisedReturnDetailsHasValidCharacters: Boolean = {
     val regex = "^[ -~¢-¥©®±×÷‐₠-₿−-∝≈≠≣-≥]*$".r

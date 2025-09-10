@@ -136,7 +136,7 @@ trait FullReturnValidator extends BaseValidation {
       ReportingCompanyNotAppointed.invalidNec
     }
 
-  private def groupEstimateReasonIsValidLength(reason: String): Boolean = reason.length >= 1 && reason.length <= 10000
+  private def groupEstimateReasonIsValidLength(reason: String): Boolean = reason.nonEmpty && reason.length <= 10000
 
   private def groupEstimateReasonHasValidCharacters(reason: String): Boolean = {
     val regex = "^[ -~¢-¥©®±×÷‐₠-₿−-∝≈≠≣-≥]*$".r
@@ -224,7 +224,7 @@ trait FullReturnValidator extends BaseValidation {
 
   }
 
-  def validateReactivationCapSubjectToReactivations: ValidationResult[?] =
+  private def validateReactivationCapSubjectToReactivations: ValidationResult[?] =
     if (
       !fullReturnModel.groupSubjectToInterestReactivation && fullReturnModel.groupLevelAmount.interestReactivationCap > 0
     ) {

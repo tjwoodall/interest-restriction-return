@@ -28,8 +28,8 @@ trait AccountingPeriodValidator extends BaseValidation {
 
   val accountingPeriodModel: AccountingPeriodModel
 
-  val MINIMUM_START_DATE: LocalDate = LocalDate.parse("2016-10-01")
-  val MINIMUM_END_DATE: LocalDate   = LocalDate.parse("2017-04-01")
+  private val MINIMUM_START_DATE: LocalDate = LocalDate.parse("2016-10-01")
+  private val MINIMUM_END_DATE: LocalDate   = LocalDate.parse("2017-04-01")
 
   private def validateStartDateCannotBeInFuture(implicit path: JsPath): ValidationResult[LocalDate] =
     if (accountingPeriodModel.startDate.isAfter(LocalDate.now())) {
