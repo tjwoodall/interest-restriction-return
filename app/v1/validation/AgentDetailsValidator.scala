@@ -27,7 +27,7 @@ trait AgentDetailsValidator extends BaseValidation {
 
   private def validateAgentName(implicit topPath: JsPath): ValidationResult[Option[String]] = {
     val lengthCheck   =
-      if (agentDetailsModel.agentName.fold(true: Boolean)(name => name.length >= 1 && name.length <= 160)) {
+      if (agentDetailsModel.agentName.fold(true: Boolean)(name => name.nonEmpty && name.length <= 160)) {
         agentDetailsModel.agentName.validNec
       } else {
         AgentNameLengthError(agentDetailsModel.agentName.get).invalidNec

@@ -28,7 +28,7 @@ trait NonConsolidatedInvestmentValidator extends BaseValidation {
 
   private def validateInvestmentName(implicit path: JsPath): ValidationResult[String] =
     if (
-      nonConsolidatedInvestmentModel.investmentName.length >= 1 && nonConsolidatedInvestmentModel.investmentName.length <= 5000
+      nonConsolidatedInvestmentModel.investmentName.nonEmpty && nonConsolidatedInvestmentModel.investmentName.length <= 5000
     ) {
       nonConsolidatedInvestmentModel.investmentName.validNec
     } else {
