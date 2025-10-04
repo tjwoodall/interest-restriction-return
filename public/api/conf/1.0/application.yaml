@@ -1234,6 +1234,11 @@ components:
         adjustedGroupInterest:
           allOf:
             - $ref: '#/components/schemas/adjustedGroupInterest'
+        totalReactivation:
+          multipleOf: 1
+          minimum: 0
+          type: number
+          description: Total of all reactivations
         totalRestrictions:
           multipleOf: 0.01
           minimum: 0
